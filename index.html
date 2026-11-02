@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pawn or Die</title>
+<meta name="description" content="Run a pawn shop with friends. Haggle by day, survive the night.">
+<meta property="og:title" content="Pawn or Die">
+<meta property="og:description" content="Run a pawn shop with friends. Haggle by day, survive the night.">
+<meta property="og:image" content="images/street.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #15171b; --panel: #1e2126; --line: #2c3037; --text: #ece6d8; --muted: #9a9890;
+  --teal: #3f9c8f; --gold: #e4b33f; --red: #d0573f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 Inter, system-ui, sans-serif; }
+h1, h2, h3 { font-family: Anton, Impact, sans-serif; font-weight: 400; letter-spacing: .02em; margin: 0; }
+a { color: var(--gold); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+.hero { min-height: 88vh; display: grid; align-items: end; padding: 48px 0;
+  background: linear-gradient(to top, var(--bg) 4%, rgba(21,23,27,.55) 45%, rgba(21,23,27,.1)), url(images/street.jpg) center/cover; }
+.hero h1 { font-size: clamp(56px, 12vw, 136px); line-height: .95; text-transform: uppercase; text-shadow: 0 4px 30px rgba(0,0,0,.5); }
+.hero h1 span { color: var(--gold); }
+.hero p { font-size: clamp(18px, 2.4vw, 22px); max-width: 560px; margin: 16px 0 28px; }
+.btn { display: inline-block; padding: 14px 26px; border-radius: 6px; background: var(--gold); color: #1a1a1a;
+  font-weight: 600; text-decoration: none; margin-right: 10px; }
+.btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--text); }
+
+section { padding: 72px 0; }
+section > .wrap > h2 { font-size: clamp(36px, 6vw, 56px); text-transform: uppercase; margin-bottom: 8px; }
+.sub { color: var(--muted); margin: 0 0 32px; }
+
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 36px; }
+.pillars h3 { font-size: 24px; color: var(--gold); }
+.pillars p { margin: 6px 0 0; color: var(--muted); }
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; display: block; }
+
+.board { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.col { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.col h3 { font-size: 22px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); }
+.col.next .dot { background: var(--muted); }
+.card { padding: 12px 0; border-top: 1px solid var(--line); }
+.card b { display: block; }
+.card p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding: 2px 7px;
+  border-radius: 4px; margin-left: 6px; vertical-align: 2px; background: var(--gold); color: #1a1a1a; }
+.tag.min { background: var(--line); color: var(--muted); }
+
+.release { border-left: 2px solid var(--line); padding: 0 0 28px 22px; position: relative; }
+.release::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
+.release h3 { font-size: 26px; }
+.release h4 { margin: 14px 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.release ul { margin: 0; padding-left: 18px; }
+.release li { margin: 4px 0; }
+.release li span { color: var(--muted); }
+#more { margin-top: 8px; }
+
+footer { padding: 40px 0; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  .board, .gallery { grid-template-columns: 1fr; }
+  .btn { margin-bottom: 10px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Pawn <span>or</span> Die</h1>
+    <p>Run a pawn shop with up to 5 friends. Haggle all day, then survive robbers, zombies and stranger things all night.</p>
+    <!-- Add the Steam link here when the store page is live -->
+    <a class="btn" href="#roadmap">See the roadmap</a>
+    <a class="btn ghost" href="#changelog">What's new</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>The game</h2>
+    <p class="sub">A small town, a broken-down shop and a lot of questionable merchandise.</p>
+    <div class="pillars">
+      <div><h3>Buy low</h3><p>Inspect every item for clues. Some of them are stolen, and some are cursed.</p></div>
+      <div><h3>Sell high</h3><p>Haggle with customers, sell online and deliver to their doors.</p></div>
+      <div><h3>Don't die</h3><p>Robbers, police raids and weird weekends. Board up the windows.</p></div>
+    </div>
+    <div class="gallery">
+      <img src="images/bar.jpg" alt="Inside the LAST CALL bar and casino" loading="lazy">
+      <img src="images/town.jpg" alt="Aerial view of the town and trailer park" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <h2>Roadmap</h2>
+    <p class="sub"><span id="updated"></span></p>
+    <div class="board">
+      <div class="col now"><h3><i class="dot"></i>In progress</h3><div id="doing"></div></div>
+      <div class="col next"><h3><i class="dot"></i>Planned</h3><div id="planned"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="changelog">
+  <div class="wrap">
+    <h2>Changelog</h2>
+    <p class="sub">Everything we've shipped, newest first.</p>
+    <div id="log"></div>
+    <button class="btn ghost" id="more" hidden>Show older</button>
+  </div>
+</section>
+
+<footer><div class="wrap">© <span id="yr"></span> Pawn or Die</div></footer>
+
+<script>
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const rank = (i) => ({ P0: 0, P1: 1, P2: 2 })[i.priority] ?? 3;
+const tag = (i) => i.priority === 'P0' ? '<span class="tag">Major</span>' : '';
+const card = (i) => `<div class="card"><b>${esc(i.title)}${tag(i)}</b>${i.desc ? `<p>${esc(i.desc)}</p>` : ''}</div>`;
+const fmt = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Roadmap data, edited by hand from the Notion Dev Board. status: doing | planned | done; P0 = Major.
+const UPDATED = '2026-11-02';
+const ITEMS = [
+  {"id": "housing", "title": "Housing", "desc": "Buy your own place: Trailer, Double Trailer, Corner Trailer, Condo or a trailer with a backyard.", "priority": "P0", "status": "doing"},
+  {"id": "weekend", "title": "Weekend Events", "desc": "New weekend anomalies, starting with Piano Rain.", "priority": "P0", "status": "doing"},
+  {"id": "online", "title": "Online co-op over the internet", "desc": "Join a friend's game with a join code.", "priority": "P0", "status": "doing"},
+  {"id": "gas", "title": "Gas Station", "desc": "A new store in town with its own products.", "priority": "P1", "status": "doing"},
+  {"id": "casino-door", "title": "Bigger casino door", "desc": "Getting in and out of LAST CALL no longer feels like a squeeze.", "priority": "P0", "status": "doing"},
+  {"id": "heists", "title": "Robbers, Thieves & Heists", "desc": "New ways for the night to go wrong.", "priority": "P0", "status": "planned"},
+  {"id": "personalities", "title": "Customer Personalities", "desc": "Every customer haggles in their own way.", "priority": "P0", "status": "planned"},
+  {"id": "storage", "title": "Storage & Display Windows", "desc": "Show off your best stock to the street.", "priority": "P0", "status": "planned"},
+  {"id": "delivery", "title": "Delivery System", "desc": "Online orders come in, and you drive them over.", "priority": "P0", "status": "planned"},
+  {"id": "customize", "title": "Extensive Shop Customization", "desc": "Walls, floors, shelves and decor, all yours to pick.", "priority": "P1", "status": "planned"},
+  {"id": "stealing", "title": "Player Stealing", "desc": "Swipe from customers or your co-op partners, if you don't get caught.", "priority": "P1", "status": "planned"},
+  {"id": "clothing", "title": "Clothing & Accessories Shop", "desc": "Try on outfits and dress your character.", "priority": "P1", "status": "planned"},
+  {"id": "homegoods", "title": "Home Goods Store", "desc": "Furniture for your new house.", "priority": "P1", "status": "planned"},
+  {"id": "5p", "title": "5-player stability", "desc": "Smooth sessions with a full lobby.", "priority": "P1", "status": "planned"},
+  {"id": "steam", "title": "Steam page & Early Access", "desc": "", "priority": "P2", "status": "planned"},
+  {"id": "stranger", "title": "The Familiar Stranger", "desc": "A mysterious customer who returns every week with a piece of the story.", "priority": "P2", "status": "planned"},
+  {"id": "cosmetics", "title": "Shop cosmetics", "desc": "Gadgets, trinkets and silly decorations for your counter.", "priority": "P2", "status": "planned"},
+  {"id": "perf", "title": "Town performance", "desc": "Higher frame rates outside the shop.", "priority": "P2", "status": "planned"},
+  {"id": "herlem", "title": "New map: Herlem Streets", "desc": "A brand-new town replaces the old one, with the pawn shop, bank and LAST CALL bar.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "zombie", "title": "Zombie Night", "desc": "Tainted water turns pedestrians into zombies that mob the shop until dawn.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "raid", "title": "Police Raid", "desc": "The detective arrives with a warrant. Hide the hot items before he gets there.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "ragdoll", "title": "Ragdoll physics", "desc": "Players, robbers and NPCs go limp when knocked out or hit by a vehicle, then get back up.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "physics-items", "title": "Physical items", "desc": "Dropped and thrown items fall, bounce and slide.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "glass", "title": "Breakable shop windows", "desc": "Glass cracks in three stages. Robbers and players can smash it, and you repair it during the day.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "upgrades2", "title": "Shop Upgrades v2", "desc": "Three upgrade tracks (Security, Business, Back Room), each with ranks and capstones.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "ray", "title": "Rusty Ray", "desc": "A scrapyard trader with a shopping cart, selling repair parts, ammo and the occasional rare weapon.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "friendly-fire", "title": "Friendly fire", "desc": "An optional lobby setting: fists, bats, guns and vehicles can hurt your friends.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "offroad", "title": "Off-road riding", "desc": "Curbs and slopes no longer stop you, and grip changes between road, grass and dirt.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "worlds", "title": "Worlds & rejoining", "desc": "Up to 5 single-player worlds. Returning players spawn where they left.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "week", "title": "New week calendar", "desc": "The week starts Sunday. Friday and Saturday are the weekend, and the next event stays a mystery until the day before.", "priority": "P0", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "vehicles", "title": "Rideable vehicles", "desc": "Bikes, a scooter, a moped, a dirt bike and a skateboard, which you can order online.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "guns", "title": "Firearms", "desc": "Six original guns with loose ammo, reloads and recoil.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "traffic", "title": "Living streets", "desc": "Cars drive through town and stop for you, and pedestrians stroll, sit and react.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "pawnos", "title": "PawnOS & LeeBay", "desc": "An in-game computer for listing items online, ordering furniture and reading your shop's reviews.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "deliveries", "title": "Delivery runs", "desc": "Carry online orders to customers' doors for tips.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "bounty", "title": "Pawn Bounty board", "desc": "Customers post wanted items and pay extra when you find them.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "defenses", "title": "Shop defenses", "desc": "Alarms, iron bars, shutters, an armored door and barbed wire.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "skills", "title": "Skill tree", "desc": "Spend XP on perks. Some skills rank up multiple times.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "daynight", "title": "Real day/night look", "desc": "A sun, moon and lit streets, and nights that stay readable.", "priority": "P0", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "buildmode", "title": "Build Mode", "desc": "Place and rotate furniture, shelves and defenses in your shop and house.", "priority": "P0", "status": "done", "doneAt": "2026-10-28"},
+  {"id": "cosmetics-done", "title": "Player cosmetics", "desc": "Customize your character and see them live in the inventory.", "priority": "P0", "status": "done", "doneAt": "2026-10-28"},
+  {"id": "casino", "title": "LAST CALL casino", "desc": "Blackjack and roulette at the bar across the street.", "priority": "P0", "status": "done", "doneAt": "2026-10-28"},
+  {"id": "steam-lobby", "title": "Steam lobbies", "desc": "Invite friends through Steam.", "priority": "P0", "status": "done", "doneAt": "2026-10-28"},
+  {"id": "door-fix", "title": "Trailer door fix", "desc": "You can now walk into the Corner Trailer without getting stuck.", "priority": "P1", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "move-fix", "title": "Snappier movement", "desc": "Removed the half-second delay when you start walking.", "priority": "P1", "status": "done", "doneAt": "2026-10-30"},
+  {"id": "map-color", "title": "Colorful town map", "desc": "The town map is back in full color.", "priority": "P1", "status": "done", "doneAt": "2026-11-02"},
+  {"id": "f-trading", "title": "Buy, haggle & sell", "desc": "Inspect items for clues, negotiate with sellers and price your shelves.", "priority": null, "status": "done", "doneAt": "2026-10-26"},
+  {"id": "f-night", "title": "Robber nights", "desc": "Defend the shop after dark with a bat.", "priority": null, "status": "done", "doneAt": "2026-10-26"},
+  {"id": "f-weekend", "title": "Weekend events", "desc": "Total Blackout and The Fog, plus rare loot for surviving.", "priority": null, "status": "done", "doneAt": "2026-10-26"},
+  {"id": "f-coop", "title": "Co-op multiplayer", "desc": "Play solo or with friends using a join code.", "priority": null, "status": "done", "doneAt": "2026-10-26"},
+  {"id": "f-items", "title": "30 collectible items", "desc": "Some are stolen, and some are cursed.", "priority": null, "status": "done", "doneAt": "2026-10-26"},
+  {"id": "f-repair", "title": "Repair bench & Collector's Book", "desc": "", "priority": null, "status": "done", "doneAt": "2026-10-26"},
+  {"id": "f-save", "title": "Save & continue", "desc": "Autosave and quick-save with F5.", "priority": null, "status": "done", "doneAt": "2026-10-26"}
+];
+{
+  document.getElementById('updated').textContent = 'Last updated: ' + new Date(UPDATED + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  for (const s of ['doing', 'planned'])
+    document.getElementById(s).innerHTML = ITEMS.filter((i) => i.status === s).sort((a, b) => rank(a) - rank(b)).map(card).join('') || '<p class="sub">Nothing here right now.</p>';
+
+  const byDay = {};
+  for (const i of ITEMS.filter((i) => i.status === 'done')) (byDay[i.doneAt] ||= []).push(i);
+  const days = Object.keys(byDay).sort().reverse();
+  const li = (i) => `<li><b>${esc(i.title)}</b>${i.desc ? ` <span>${esc(i.desc)}</span>` : ''}</li>`;
+  const html = days.map((d) => {
+    const major = byDay[d].filter((i) => i.priority === 'P0'), rest = byDay[d].filter((i) => i.priority !== 'P0');
+    return `<div class="release"><h3>${fmt(d)}</h3>` +
+      (major.length ? `<h4>New features</h4><ul>${major.map(li).join('')}</ul>` : '') +
+      (rest.length ? `<h4>${major.length ? 'Improvements & fixes' : 'Changes'}</h4><ul>${rest.map(li).join('')}</ul>` : '') + '</div>';
+  });
+  const log = document.getElementById('log'), more = document.getElementById('more');
+  log.innerHTML = html.slice(0, 3).join('');
+  if (html.length > 3) { more.hidden = false; more.onclick = () => { log.innerHTML = html.join(''); more.hidden = true; }; }
+}
+</script>
+</body>
+</html>
